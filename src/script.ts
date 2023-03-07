@@ -24,6 +24,8 @@ function preencherLista(lista: CountList, containerID: string): void {
 
 function preencherEstatisticas(transacoes: Transacao[]): void {
   const data = new Estatisticas(transacoes);
+  console.log(data);
+
   preencherLista(data.pagamento, "pagamento");
   preencherLista(data.status, "status");
 
@@ -34,7 +36,11 @@ function preencherEstatisticas(transacoes: Transacao[]): void {
       currency: "BRL",
     });
   }
-  console.log(data);
+
+  const diaElement = document.querySelector<HTMLElement>("#dia span");
+  if (diaElement) {
+    diaElement.innerText = data.melhorDia[0];
+  }
 }
 
 function preencherTabela(transacoes: Transacao[]): void {

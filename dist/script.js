@@ -19,6 +19,7 @@ function preencherLista(lista, containerID) {
 }
 function preencherEstatisticas(transacoes) {
     const data = new Estatisticas(transacoes);
+    console.log(data);
     preencherLista(data.pagamento, "pagamento");
     preencherLista(data.status, "status");
     const totalElement = document.querySelector("#total span");
@@ -28,7 +29,10 @@ function preencherEstatisticas(transacoes) {
             currency: "BRL",
         });
     }
-    console.log(data);
+    const diaElement = document.querySelector("#dia span");
+    if (diaElement) {
+        diaElement.innerText = data.melhorDia[0];
+    }
 }
 function preencherTabela(transacoes) {
     const tabela = document.querySelector("#transacoes tbody");
